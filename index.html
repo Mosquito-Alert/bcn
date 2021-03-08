@@ -166,7 +166,7 @@ function add_layer(a_date, remove_layer){
                   mymap.removeLayer(layerGeo);
           }
  
-      var url_to_geotiff_file = "http://webserver.mosquitoalert.com/static/tigapublic/models/vector/bcn/data/vri" + a_date + ".tif";
+      var url_to_geotiff_file = "data/vri" + a_date + ".tif";
 
       fetch(url_to_geotiff_file)
         .then(response => response.arrayBuffer())
