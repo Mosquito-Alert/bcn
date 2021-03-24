@@ -210,7 +210,7 @@ var layerGeo;
 $(document).ready(function() {
 
       var date_today = new Date();
-      var date_today_fmt = date_today.getFullYear() + '-' + date_today.getMonth().toString().padStart(2, '0') + '-' + date_today.getDate().toString().padStart(2, '0'); 
+      var date_today_fmt = date_today.getFullYear() + '-' + (1+date_today.getMonth()).toString().padStart(2, '0') + '-' + date_today.getDate().toString().padStart(2, '0'); 
 
       add_layer(date_today_fmt, false);
 
@@ -221,7 +221,7 @@ $('#datepicker_id').datepicker({
   .on('changeDate', function(e) {
       
       var this_date = e.format('yyyy-mm-dd');
-      var this_date_fmt = e.date.getFullYear() + '-' + e.date.getMonth().toString().padStart(2, '0') + '-' + e.date.getDate().toString().padStart(2, '0'); 
+      var this_date_fmt = e.date.getFullYear() + '-' + (1+e.date.getMonth()).toString().padStart(2, '0') + '-' + e.date.getDate().toString().padStart(2, '0'); 
       
       if(e.date>date_today){
         $("#cast_type").text("Forecast").removeClass().addClass("badge bg-warning text-dark");
