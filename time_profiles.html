@@ -59,15 +59,16 @@
 }
 
 
-      var date_today = new Date();
-      var date_ahead = date_today.addDays(6)
-      var date_today_fmt = date_today.getFullYear() + '-' + (1+date_today.getMonth()).toString().padStart(2, '0') + '-' + date_today.getDate().toString().padStart(2, '0'); 
-      var date_ahead_fmt = date_ahead.getFullYear() + '-' + (1+date_ahead.getMonth()).toString().padStart(2, '0') + '-' + date_ahead.getDate().toString().padStart(2, '0'); 
 
 
 var myChart = echarts.init(document.getElementById('main'));
 
 $.get('data/bcn_time_profile_data.json').done(function (data) {
+  
+      var these_dates = data.map(function(item){return item['date']});
+      var forecast_start = these_dates[these_dates.length - 7];
+      var forecast_end = these_dates[these_dates.length - 1];
+
     myChart.setOption({
        title: {
         left: 'center',
@@ -98,7 +99,7 @@ $.get('data/bcn_time_profile_data.json').done(function (data) {
     ],
    xAxis: {
         type: 'category',
-        data: data.map(function(item){return item['date']})
+        data: these_dates
     },
     yAxis: {
         type: 'value'
@@ -114,9 +115,9 @@ $.get('data/bcn_time_profile_data.json').done(function (data) {
                 },
                 data: [ [{
                     name: 'Forecast',
-                    xAxis: date_today_fmt
+                    xAxis: forecast_start
                 }, {
-                    xAxis: date_ahead_fmt
+                    xAxis: forecast_end
                 }] ]
             }
     }]
@@ -216,6 +217,9 @@ $.get('data/bcn_district_means.json').done(function (data) {
 }
   district_names = district_names.filter(onlyUnique);
   
+        var forecast_start = these_dates[these_dates.length - 7];
+      var forecast_end = these_dates[these_dates.length - 1];
+
     district_chart.setOption({
        title: {
         left: 'center',
@@ -338,9 +342,9 @@ $.get('data/bcn_district_means.json').done(function (data) {
                 },
                 data: [ [{
                     name: 'Forecast',
-                    xAxis: date_today_fmt
+                    xAxis: forecast_start
                 }, {
-                    xAxis: date_ahead_fmt
+                    xAxis: forecast_end
                 }] ]
             }
 
