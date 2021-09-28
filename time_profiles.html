@@ -215,7 +215,7 @@ $.get('data/bcn_district_means.json').done(function (data) {
   function onlyUnique(value, index, self) {
   return self.indexOf(value) === index;
 }
-  district_names = district_names.filter(onlyUnique);
+  district_names = ["Ciutat Vella", "Eixample", "Sants-Montjuïc", "Les Corts",  "Sarrià-Sant Gervasi",  "Gràcia",  "Horta-Guinardó",  "Nou Barris",  "Sant Andreu",  "Sant Martí"];
   
         var forecast_start = these_dates[these_dates.length - 7];
       var forecast_end = these_dates[these_dates.length - 1];
